@@ -2,7 +2,7 @@ import styled, { keyframes } from "styled-components";
 import { styled as materialStyled } from "@mui/material/styles";
 import button from "@mui/material/Button";
 
-function Generic() {
+function Bottom() {
     return (
         <Wrapper>
             page2
@@ -10,7 +10,7 @@ function Generic() {
     );
 }
 
-export default Generic;
+export default Bottom;
 
 const Wrapper = styled.div`
     margin: 0;

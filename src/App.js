@@ -1,21 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Element from "./pages/Element";
-import Generic from "./pages/Generic";
-import Landing from "./pages/Landing";
+import About from "./pages/About";
+import Works from "./pages/Works";
+import Contents from "./pages/Contents";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
+    // link? route?
     return (
         <Router>
             <Header />
             <Routes>
                 <Route path="/" exact element={<Home />} />
-                <Route path="/element" element={<Element />} />
-                <Route path="/generic" element={<Generic />} />
-                <Route path="/landing" element={<Landing />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/works" element={<Works />} />
+                <Route path="/contents" element={<Contents />} />
                 <Route path="*" element={<Home />} />
             </Routes>
             <Footer />

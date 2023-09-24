@@ -31,7 +31,7 @@ const Wrapper = styled.div`
 	//line-height: 3.25em;
     color: white;
     background-color: #242943;
-    animation: ${Reveal} 1s ease;
+    animation: ${Reveal} ease 2.5s;
     display: flex;
     justify-content: space-between;
     font-size: 1.2em;
