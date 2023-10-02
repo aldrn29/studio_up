@@ -1,20 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { styled as materialStyled } from "@mui/material/styles";
 import button from "@mui/material/Button";
+import Motion from "../components/Motion";
+import EastRoundedIcon from '@mui/icons-material/EastRounded';
 
 function Home() {
     const navigate = useNavigate();
+    const ref = useRef();
+
+    const handleScroll = () => {
+        const screenHeight = ref.current.clientHeight;
+
+        window.scrollTo({
+            top: screenHeight,
+            behavior: "smooth",
+        });
+    };
     
     return (
+        <Motion>
         <Wrapper>
-            <Banner>
+            <Banner ref={ref}>
                 <Inner>
-                    <Intro>Hi, my name is Forty</Intro>
+                    <Intro>Hi, We are Studio_up.</Intro>
                     <Brief> 
-                        <div>A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP AND RELEASED UNDER THE CREATIVE COMMONS.</div>
-                        <Button>G E T _ S T A R T E D</Button>
+                        <div>스튜디오업, Sup은 Film을 기반으로 광고, 영화, 다큐멘터리를 제작하고 있습니다.</div>
+                        <Button onClick={handleScroll}>
+                            G E T _ S T A R T E D
+                            <EastRoundedIcon />
+                        </Button>
                     </Brief>
                 </Inner>
             </Banner>
@@ -22,32 +38,33 @@ function Home() {
                 <About onClick={() => navigate("/about")}>
                     <div>
                         <TitleWrapper>
-                            <Title>About</Title>
+                            <Title>About </Title>
                             <SubTitle></SubTitle>
                         </TitleWrapper>
                     </div>
                 </About>
+                <Process onClick={() => navigate("/process")}>
+                    <div>
+                        <TitleWrapper>
+                            <Title>Process </Title>
+                            <SubTitle></SubTitle>
+                        </TitleWrapper>
+                    </div>
+                </Process>
                 <Works onClick={() => navigate("/works")}>
                     <div>
                         <TitleWrapper>
-                            <Title>Works</Title>
+                            <Title>Works </Title>
                             <SubTitle></SubTitle>
                         </TitleWrapper>
                     </div>
                 </Works>
-                <Contents onClick={() => navigate("/contents")}>
-                    <div>
-                        <TitleWrapper>
-                            <Title>Contents</Title>
-                            <SubTitle></SubTitle>
-                        </TitleWrapper>
-                    </div>
-                </Contents>
                 <Bottom onClick={() => navigate("/")}>
 
                 </Bottom>
             </Main>
         </Wrapper>
+        </Motion>
     );
 }
 
@@ -85,7 +102,7 @@ const Banner = styled.div`
     min-height: 30em;
 	max-height: 50em;
 	position: relative;
-    background-image: url("../images/banner.jpg");
+    background-image: url("./images/banner.jpg");
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -116,6 +133,7 @@ const Inner = styled.div`
     left: 0;
     width: 80%;
     z-index: 2;
+    opacity: 0;
     animation: ${Reveal} 1.5s;
     animation-fill-mode: forwards;
     animation-delay: 0.1s;
@@ -133,14 +151,13 @@ const Brief = styled.div`
     width: 100%;
     height: 50px;
     display: flex;
-    item-align: center;
     text-align: left;
-    font-size: 1.2em;
-    
+    font-size: 1rem;
+
 	& > div {
         width: 40%;
         height: 100%;
-        margin-right: 10px;
+        margin-right: 30px;
 	}
 `; 
 
@@ -154,7 +171,7 @@ const Main = styled.div`
 const About = styled.div`
     width: 40%;
     height: 48vh;
-    background-image: url("../images/pic01.jpg");
+    background-image: url("./images/pic01.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -167,6 +184,9 @@ const About = styled.div`
         display: block;
         width: 100%;
 		height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         animation: ${Idle} ease 1s;
         animation-fill-mode: forwards;
     }
@@ -177,10 +197,10 @@ const About = styled.div`
     }
 `;
 
-const Works = styled.div`
+const Process = styled.div`
     width: 60%;
     height: 48vh;
-    background-image: url("../images/pic06.jpg");
+    background-image: url("./images/pic06.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -191,6 +211,9 @@ const Works = styled.div`
         display: block;
         width: 100%;
 		height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         animation: ${Idle} ease 1s;
         animation-fill-mode: forwards;
 	}
@@ -201,10 +224,10 @@ const Works = styled.div`
     }
 `;
 
-const Contents = styled.div`
+const Works = styled.div`
     width: 100%;
     height: 48vh;
-    background-image: url("../images/pic07.jpg");
+    background-image: url("./images/pic07.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -215,6 +238,9 @@ const Contents = styled.div`
         display: block;
         width: 100%;
 		height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         animation: ${Idle} ease 1s;
         animation-fill-mode: forwards;
 	}
@@ -232,36 +258,37 @@ const Bottom = styled.div`
 `;
 
 const TitleWrapper = styled.div`
-    width: 100%;
-    height: 100%;
+    width: auto;
     z-index: 2;
     padding-left: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 `;
 
 const Title = styled.h2`
     margin: 0;
-    width: 100%;
+    width: auto;
     color: white;
     font-size: 2.5em;
+    padding-bottom: 20px;
+    display: inline-block;
+    border-bottom: 3px solid white;
+    white-space: pre;
 `;
 
 const SubTitle = styled.p`
     width: 40%;
-    border-top: 3px solid white;
+    height: auto;
 `;
 
 const Button = materialStyled(button)(() => ({
     width: "245px",
-    height: "60px",
+    height: "50px",
     color: "white",
-    marginTop: "2px",
     border: "3px solid white",
     borderRadius: "0",
     cursor: "pointer",
     fontWeight: "bold",
+    display: "flex",
+    justifyContent: "space-evenly",
     "&:hover": { 
         color: "#6fc3df",
         border: "3px solid #6fc3df",

@@ -1,9 +1,9 @@
-import styled, { keyframes } from "styled-components";
-import { styled as materialStyled } from "@mui/material/styles";
-import button from "@mui/material/Button";
+import styled from "styled-components";
+import Motion from "../components/Motion";
 
 function About() {
     return (
+        <Motion>
         <Wrapper>
             <TitleWrapper>
                 <Title>About</Title>
@@ -13,6 +13,7 @@ function About() {
 
             </Content>
         </Wrapper>
+        </Motion>
     );
 }
 
@@ -23,10 +24,11 @@ const Wrapper = styled.div`
     height: auto;
     margin: 0;
     padding: 0;
-    background-color: #242943;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #242943;
+    border-bottom: solid 1px rgba(244,244,255,0.2);
 `;
 
 const TitleWrapper = styled.div`
@@ -53,8 +55,9 @@ const SubTitle = styled.p`
 
 const Content = styled.div`
     width: 80%;
-    height: 80vh;
+    height: 80vh; /*auto 변경*/
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 `;

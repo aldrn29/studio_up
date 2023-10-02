@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
@@ -35,7 +34,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 1.2em;
-    z-index: 2;
+    z-index: 3;
 `;
 
 const Logo = styled.div`

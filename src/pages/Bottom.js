@@ -1,6 +1,4 @@
-import styled, { keyframes } from "styled-components";
-import { styled as materialStyled } from "@mui/material/styles";
-import button from "@mui/material/Button";
+import styled  from "styled-components";
 
 function Bottom() {
     return (

@@ -1,32 +1,44 @@
-import styled, { keyframes } from "styled-components";
-import { styled as materialStyled } from "@mui/material/styles";
-import button from "@mui/material/Button";
+import styled from "styled-components";
+import Motion from "../components/Motion";
+import ProcessData from "../components/ProcessData";
+import Card from "../components/Card";
 
-function Landing() {
+
+function Process() {
     return (
+        <Motion>
         <Wrapper>
             <TitleWrapper>
-                <Title>Contents</Title>
+                <Title>Process</Title>
                 <SubTitle></SubTitle>
+
             </TitleWrapper>
             <Content>
-
+                {ProcessData.map(data => 
+	                <Card
+                        key={data.id}
+                        title={data.title}
+                        content={data.content} 
+                    />
+	            )}
             </Content>
         </Wrapper>
+        </Motion>
     );
 }
 
-export default Landing;
+export default Process;
 
 const Wrapper = styled.div`
     width: 100%;
     height: auto;
     margin: 0;
     padding: 0;
-    background-color: #242943;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #242943;
+    border-bottom: solid 1px rgba(244,244,255,0.2);
 `;
 
 const TitleWrapper = styled.div`
@@ -57,4 +69,5 @@ const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: white;
 `;
